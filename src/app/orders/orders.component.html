@@ -1,0 +1,51 @@
+<header class="header-bar"></header>
+        
+            <div class="main">
+                <div class="inv"> 
+                    <p>**交易额   inveat</p>
+                    <p class="invest">
+                        <span>当前交易额</span><br>
+                        <b class="hong">{{jindu}}</b>
+                    </p>
+                    <p class="invest">
+                        <!-- <circle-progress
+                                [percent]="baifen"
+                                [radius]="100"
+                                [outerStrokeWidth]="16"
+                                [innerStrokeWidth]="8"
+                                [outerStrokeColor]="'#2979ff'"
+                                [innerStrokeColor]="'#bddcee'"
+                                [animation]="true"
+                                [animationDuration]="300"
+                        >
+                        </circle-progress> -->
+                        <el-progress type="circle" width="150" [percentage]="baifen"></el-progress>
+                    </p>
+                    <p class="invest">
+                        <span>助力交易额</span><br>
+                        <b>85000000</b>
+                    </p>
+                </div>
+                <div class="pay">
+                    <p>**盈利率   payoutrate</p>
+                    <!-- <p style="width:50%;"><el-slider [model]="50"></el-slider></p> -->
+                    <div style="padding:66px 0;">
+                        <div class="dd">
+                            <b *ngIf="showscale" style="width:45%;">
+                                <span class="yingli">{{payoutrate}}%</span><br>
+                                <i style="border:3px solid #fe3c3c;"></i>
+                            </b>
+                        <b>
+                            <span style="font-size: 26px;">7.5%</span><br>
+                            <i style="border:3px solid gray;"></i>
+                        </b>
+                            <b *ngIf="hidescale" style="width:45%;">
+                                <span class="yingli">{{payoutrate}}%</span><br>
+                                <i style="border:3px solid #2979ff;"></i>
+                            </b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+      
