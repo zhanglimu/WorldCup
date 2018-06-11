@@ -27,6 +27,7 @@ export class OrdersComponent implements OnInit {
     showscale:boolean;
     hidescale:boolean;
     private interval;
+    ss:string;
     constructor(private router:Router,private QUERY: InterfaceService,private message: ElMessageService) { 
       this.showscale=false;
       this.hidescale=false;
@@ -34,11 +35,15 @@ export class OrdersComponent implements OnInit {
       // this.interval = setInterval(() => {
         this.QUERY.bar().subscribe(data => {
           this.jindu =data.invest;
-          var num=((Number(data.invest)/85000000)*100).toFixed(2)
+          this.ss=data.invest;
+          var lastIndex = this.ss.lastIndexOf(',');
+          if (lastIndex > -1) {
+            this.ss = this.ss.substring(0, lastIndex) + this.ss.substring(lastIndex + 1, data.invest.length);
+           }
+          var num=((Number(this.ss)/85000000)*100).toFixed(2)
           this.baifen=num;
           this.payoutrate =data.payoutrate;
           if(data.payoutrate<=7.5){
-            console.log("111")
             this.showscale=true;
           }else{
             this.hidescale=true;
