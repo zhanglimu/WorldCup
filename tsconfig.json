@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "./aws-WorldCup/out-tsc",
+    "outDir": "./caiex-WorldCup/out-tsc",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",

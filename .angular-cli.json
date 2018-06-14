@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "aws-WorldCup",
+      "outDir": "caiex-WorldCup",
       "assets": [
         "assets",
         "favicon.ico"

@@ -32,24 +32,21 @@ export class OrdersComponent implements OnInit {
       this.showscale=false;
       this.hidescale=false;
 
-      // this.interval = setInterval(() => {
         this.QUERY.bar().subscribe(data => {
           this.jindu =data.invest;
           this.ss=data.invest;
-          var lastIndex = this.ss.lastIndexOf(',');
-          if (lastIndex > -1) {
-            this.ss = this.ss.substring(0, lastIndex) + this.ss.substring(lastIndex + 1, data.invest.length);
-           }
-          var num=((Number(this.ss)/85000000)*100).toFixed(2)
+          var lastIndex = this.ss.replace(/,/g,"");
+          var num=((Number(lastIndex)/85000000)*100).toFixed(2)
           this.baifen=num;
           this.payoutrate =data.payoutrate;
           if(data.payoutrate<=7.5){
             this.showscale=true;
+            this.hidescale=false;
           }else{
             this.hidescale=true;
+            this.showscale=false;
           }
         })
-      // }, 30000);
       
     }
 /**
@@ -64,14 +61,27 @@ export class OrdersComponent implements OnInit {
     this.interval = setInterval(() => {
       this.QUERY.bar().subscribe(data => {
         this.jindu =data.invest;
-        var num=((Number(data.invest)/85000000)*100).toFixed(2)
+        this.ss=data.invest;
+        // var lastIndex = this.ss.lastIndexOf(',');
+        var lastIndex = this.ss.replace(/,/g,"");
+        // console.log(lastIndex);
+        // if (lastIndex > -1) {
+        //   this.ss = this.ss.substring(0, lastIndex) + this.ss.substring(lastIndex + 1, data.invest.length);
+        //  }
+        var num=((Number(lastIndex)/85000000)*100).toFixed(2)
         this.baifen=num;
         this.payoutrate =data.payoutrate;
         if(data.payoutrate<=7.5){
-          console.log("222")
           this.showscale=true;
-        }else{
+          this.hidescale=false;
+        }
+        // if(data.payoutrate>=7.5){
+        //   this.hidescale=true;
+        //   this.showscale=false;
+        // }
+        else{
           this.hidescale=true;
+          this.showscale=false;
         }
       })
     }, 30000);
